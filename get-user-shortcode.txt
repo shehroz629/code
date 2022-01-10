@@ -1,0 +1,21 @@
+function user_data($atts)
+{
+	$result ='';
+	
+		if ( is_user_logged_in() ) {
+			$user = wp_get_current_user();
+
+			$result .= '<div class="user">';
+			$result .=  '<h1>' . $user->user_nicename . '</h1>';
+			$result .= '<img src="'.get_avatar_url($user->ID).'">';
+			$result .= '</div>';
+
+	}
+
+	echo $result;
+
+
+		
+
+}
+add_shortcode('data_func' , 'user_data');
