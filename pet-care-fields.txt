@@ -1,0 +1,56 @@
+ <tr style=" display:grid;">
+        <th style="padding:0;"><label for="address"><?php _e("address "); ?></label></th>
+        <td style="padding:0;">
+            <input type="text" name="address" id="address" value="<?php echo esc_attr( get_the_author_meta( 'address', $user->ID ) ); ?>" class="regular-text" /><br />
+        <span class="description"><?php _e("Please enter your address."); ?></span>
+     </td>
+</tr>
+
+
+		<tr style=" display:grid;">
+        <th style="padding:0;"><label for="veterinarians_name"><?php _e("veterinarians_name "); ?></label></th>
+        <td style="padding:0;">
+            <input type="text" name="veterinarians_name" id="veterinarians_name" value="<?php echo esc_attr( get_the_author_meta( 'veterinarians_name', $user->ID ) ); ?>" class="regular-text" /><br />
+            <span class="description"><?php _e("Please enter veterinarians name."); ?></span>
+ </td>
+</tr>
+
+<tr style=" display:grid;">
+<th style="padding:0;"><label for="note"><?php _e("note "); ?></label></th>
+<td style="padding:0;">
+<input type="text" name="note" id="note" value="<?php echo esc_attr( get_the_author_meta( 'note', $user->ID ) ); ?>" /><br>        
+ <span class="description"><?php _e("Note"); ?></span>
+ </td>
+</tr>
+
+
+
+
+		<tr style=" display:grid;">
+        <th style="padding:0;"><label for="city"><?php _e(" City "); ?></label></th>
+        <td style="padding:0;">
+			<input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" /><br>        
+            <span class="description"><?php _e("City"); ?></span>
+        </td></tr>
+		<tr style=" display:grid;">
+        <th style="padding:0;"><label for="province"><?php _e(" Province "); ?></label></th>
+        <td style="padding:0;">
+		<input type="text" name="city" id="province" value="<?php echo esc_attr( get_the_author_meta( 'province', $user->ID ) ); ?>" /><br>        
+        <span class="description"><?php _e("province"); ?></span>
+        </td></tr>
+
+
+
+<tr style=" display:grid;">
+        	<th style="padding:0;"><label for="country"><?php _e("country"); ?></label></th>
+				<td style="padding:0;">
+				<input type="text" name="about_us" id="country" value="<?php echo esc_attr( get_the_author_meta( 'country', $user->ID ) ); ?>" /><br>        
+				<span class="description"><?php _e("country"); ?></span>
+</td>
+</ tr>
+
+
+
+
+
+<?php echo apply_shortcodes('[contact-form-7 id="993" title="c/s/c"]') ?>

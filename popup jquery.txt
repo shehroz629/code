@@ -1,0 +1,10 @@
+jQuery("a.bording").click(function(){
+  jQuery(".popup").show();
+});
+jQuery(".popup-close").click(function(){
+  jQuery(".popup").hide();
+
+});	
+	jQuery(".submit").click(function(){
+  jQuery(".popup").hide();
+});

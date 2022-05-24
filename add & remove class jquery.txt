@@ -1,0 +1,5 @@
+jQuery(".s_btn").click(function(){
+  	jQuery(this).parent().addClass('pepe_active');
+	jQuery('.s_btn').not(this).parent().removeClass('pepe_active');
+});
+	
