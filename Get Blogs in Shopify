@@ -1,0 +1,5 @@
+{% for article in blogs.Collection1.articles  %}
+                    <h2>{{ article.title | link_to: article.url }}</h2>
+                    <p>{{ article.content }}</p>
+              {% endfor %}
+            
