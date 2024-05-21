@@ -1,0 +1,65 @@
+function shortcode_before_entry() { ?>
+
+  <div class="tab post-tab"> 
+   <?php
+	$args = array(
+        'hide_empty'=> 1,
+        'orderby' => 'name',
+        'order' => 'ASC'
+    );
+    $categories = get_categories($args);
+	$first_category = true;
+    foreach($categories as $category) { 
+        $active_class = $first_category? ' class="tablinks active"' : 'class="tablinks"';
+		$default_open = $first_category? 'id="defaultOpen"' : '';
+		echo 
+        '<button '.$active_class.$default_open.' class="tablinks" onclick="openCity(event,  \''.$category->slug.'\')">'.$category->name.'</button>';
+		$first_category = false;
+   		} 
+		echo '</div>';
+		$first_category = true;
+  		foreach($categories as $category) { 
+       
+        $the_query = new WP_Query(array(
+            'post_type' => 'post',
+            'posts_per_page' => 100,
+            'category_name' => $category->slug
+        ));
+		$active_class = $first_category? ' style="display: block;"' : '';
+	  	echo '<div id="'.$category->slug.'" class="tabcontent"'.$active_class.'">';
+	  	echo '<div class="cat-custom">';
+        while ( $the_query->have_posts() ) : 
+        $the_query->the_post();
+	  	echo '<div class="cat-post">';
+		echo '<a href="'. get_permalink() .'">';
+		echo get_the_post_thumbnail( );
+		echo '</a>';
+	  	echo '<div class="c-post-content">';
+        echo '<h1>';
+        echo '<a href="'. get_permalink() .'">';
+	  	echo the_title(); 
+	  	echo '</a>';
+        echo '</h1>';
+	  	echo '<div class="p_meta"> ';
+	  	echo '<div class="author-profile">';
+		echo get_avatar( get_the_author_meta('ID'));
+	  	echo '<div class="r_date">';
+		echo get_the_author();
+	 	echo '<p> <span>'. get_the_date('F j, Y') . '</span>';
+	  	echo ' . ';
+			$word_count = str_word_count(get_the_content());
+        	$reading_time = ceil($word_count / 200);
+        echo '<span class="post-time">' . $reading_time . 'min read' .'</span>';
+		echo '</p>';
+	  	echo '</div>';
+	  	echo '</div>';
+	  	echo '<a href=" ' . get_permalink() . ' ">  read more </a>';
+	  	echo '</div>';
+	  	echo '</div>';
+	  	echo '</div>';
+        endwhile; 
+		echo '</div>';
+	  	echo '</div>';
+    }
+}
+add_shortcode('exert-search', 'shortcode_before_entry');
